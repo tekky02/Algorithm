@@ -3,6 +3,6 @@
 
 记录一下自己做过的题目，方便复习之需
 
-### [find me on leetcode](https://leetcode.com/ktyy/)
+### [Go to leetcode](https://leetcode.com/ktyy/)
 
-### [find me on codeforces](https://codeforces.com/profile/tekky)
+### [Go to codeforces](https://codeforces.com/profile/tekky)
