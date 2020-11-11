@@ -3,14 +3,11 @@
 #include <algorithm>
 #include <iterator>
 
-int f() {
-	static int i = 1;
-	return i++;
-}
-
 int main() {
 	std::vector<int> nums(100);
-	std::generate(nums.begin(), nums.end(), f);
+	std::generate(nums.begin(), nums.end(), [i = 0]()mutable {
+		return i++;
+	});
 	std::random_shuffle(nums.begin(), nums.end());
 	std::copy(nums.cbegin(), nums.cend(), std::ostream_iterator<int>(std::cout, " "));
 	std::cout << std::endl;
