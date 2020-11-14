@@ -4,10 +4,10 @@
 #include <cstring>
 #include <cstdio>
 
-int maxsub(int a[],int n)
+int maxsub(int a[], int n)
 {
-    int i,max=0,b=0;
-    for(i=0;i<n;i++)
+    int i, max = 0, b = 0;
+    for(i = 0; i < n; i++)
     {
         if(b > 0)
             b += a[i];
