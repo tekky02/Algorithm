@@ -1,74 +1,51 @@
-// 3579_median.cc
-// created by tekky on 2020.11.12.
+#define _CRT_SECURE_NO_WARNINGS
 
-#include <queue>
-#include <vector>
-#include <algorithm>
-#include <cmath>
-#include <cstdio>
+#include<iostream>
+#include<cstdio>
+#include<cmath>
+#include<string>
+#include<algorithm>
+using namespace std;
 
-struct Solution {
-	std::priority_queue<int> maxHeap;
-	std::priority_queue<int, std::vector<int>, std::greater<int>> minHeap;
+int *a;
+int m, n;
 
-	void addNum(int num) {
-		if(maxHeap.empty())
-            maxHeap.push(num);
-        else if(maxHeap.size()>minHeap.size())
-        {
-            if(maxHeap.top()>num)
-            {
-                minHeap.push(maxHeap.top());
-                maxHeap.pop();
-                maxHeap.push(num);
-            }
-            else
-                minHeap.push(num);       
-        }
-        else
-        {
-            if(minHeap.top()<num)
-            {
-                maxHeap.push(minHeap.top());
-                minHeap.pop();
-                minHeap.push(num);
-            }
-            else
-                maxHeap.push(num);
-        }
-		// maxHeap.push(num);
-		// minHeap.push(maxHeap.top());
-		// maxHeap.pop();
-		// if (maxHeap.size() < minHeap.size()) {
-		// 	maxHeap.push(minHeap.top());
-		// 	minHeap.pop();
-		// }
-	}
-
-	int median() {
-		return maxHeap.top();
-	}
-};
-
-
-int main(int argc, char const *argv[])
+bool test(int mid)
 {
-	// NOTE: TLE now...
-	int count;
-	std::vector<int> nums;
-	while (~scanf("%d", &count)) {
-		nums.resize(count);
-		for (int i = 0; i < count; ++i) scanf("%d", &nums[i]);
-
-		Solution s;
-		std::vector<int> sequnce;
-		for (int i = 0; i < nums.size() - 1; ++i) {
-			for (int j = i + 1; j < nums.size(); ++j) {
-				s.addNum(std::abs(nums[i] - nums[j]));
-			}
+	int count = 0;
+	for (int i = 0;i<n; i++)
+	{
+		count += n - (lower_bound(a, a + n, a[i] + mid) - a);
+	}
+	return count > m;
+}
+int main()
+{
+	while (scanf("%d", &n) != EOF)
+	{
+		m = n * (n - 1) / 4;
+		a = new int[n];
+		for (int i = 0; i < n; i++)
+		{
+			scanf("%d", &a[i]);
 		}
-		// std::sort(sequnce.begin(), sequnce.end());
-		printf("%d\n", s.median());
+		sort(a, a + n);
+		int L = 0, R = a[n - 1] - a[0];
+		while (R > L + 1)
+		{
+			int mid = (R + L) >> 1;
+			if (test(mid))
+			{
+				L = mid;
+			}
+			else
+			{
+				R = mid;
+			}
+			
+		}
+		delete a;
+		printf("%d\n", L);
 	}
 	return 0;
 }
