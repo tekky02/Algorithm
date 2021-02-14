@@ -56,3 +56,4 @@ func (this *LRUCache) Put(key int, value int) {
  * param_1 := obj.Get(key);
  * obj.Put(key,value);
  */
+

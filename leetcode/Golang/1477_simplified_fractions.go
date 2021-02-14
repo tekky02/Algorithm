@@ -29,3 +29,4 @@ func gcd(m, n int) int {
 	}
 	return m
 }
+

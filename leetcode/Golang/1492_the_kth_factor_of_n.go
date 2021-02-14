@@ -16,3 +16,4 @@ func kthFactor(n int, k int) int {
 	}
 	return -1
 }
+

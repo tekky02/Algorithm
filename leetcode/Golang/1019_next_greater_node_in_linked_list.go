@@ -30,3 +30,4 @@ func nextLargerNodes(head *ListNode) []int {
 	result[count] = 0
 	return result[:count+1]
 }
+

@@ -25,3 +25,4 @@ func thirdMax(nums []int) int {
     }
     return third
 }
+

@@ -38,3 +38,4 @@ func (this *ParkingSystem) AddCar(carType int) bool {
  * obj := Constructor(big, medium, small);
  * param_1 := obj.AddCar(carType);
  */
+
